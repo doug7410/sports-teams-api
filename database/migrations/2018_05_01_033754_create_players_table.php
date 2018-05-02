@@ -17,9 +17,11 @@ class CreatePlayersTable extends Migration
             $table->increments('id');
             $table->string('first_name');
             $table->string('last_name');
-            $table->integer('team_id');
+            $table->integer('team_id')->unsigned();
             $table->timestamps();
+        });
 
+        Schema::table('players', function (Blueprint $table) {
             $table->foreign('team_id')
                 ->references('id')->on('teams')
                 ->onDelete('cascade');

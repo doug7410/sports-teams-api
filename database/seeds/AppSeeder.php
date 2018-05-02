@@ -11,6 +11,8 @@ class AppSeeder extends Seeder
      */
     public function run()
     {
+        factory(\App\User::class)->create();
+
         factory(\App\Team::class, 10)
             ->create()
             ->each(function($team) {
